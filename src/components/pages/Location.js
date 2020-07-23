@@ -2,13 +2,16 @@ import React, { useState, useEffect } from 'react';
 import L, { map } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
+import IssImage from '../../static/iss.png';
+
 const Location = props => {
     // Polling every 6 seconds to not crash API
     let POLLING_DELAY_IN_MILLISECONDS = 6000;
 
     let [coordinates, setCoordinates] = useState(null);
     let [mymap, setMap] = useState(null);
-    let [marker, setMarker] = useState(null);
+    let [shadowMarker, setShadowMarker] = useState(null);
+    let [issMarker, setIssMarker] = useState(null);
 
     useEffect(() => {
         // Initialize the map by calling API once and setting the initial focus
@@ -25,14 +28,23 @@ const Location = props => {
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(mymap);
 
-        let circle = L.circle([51.505, -0.09], {
-            color: 'red',
-            fillColor: '#f03',
-            fillOpacity: 0.5,
-            radius: 500
+        let circle = L.circleMarker([51.505, -0.09], {
+            color: 'coral',
+            fillColor: 'coral',
+            fillOpacity: 0.3,
+            radius: 80,
         }).addTo(mymap);
 
-        setMarker(circle);
+        let issIcon = L.icon({
+            iconUrl: IssImage,
+            iconSize: [50, 50], // size of the icon
+            iconAnchor: [25, 25], // point of the icon which will correspond to marker's location
+        });
+
+        let issIconMarker = L.marker([51.505, -0.09], { icon: issIcon }).addTo(mymap);
+
+        setIssMarker(issIconMarker);
+        setShadowMarker(circle);
 
         // Call location API once upon load to pan almost immediately
         findIssLocation();
@@ -47,7 +59,8 @@ const Location = props => {
     useEffect(() => {
         if (coordinates) {
             let newLatLng = new L.LatLng(coordinates.latitude, coordinates.longitude);
-            marker.setLatLng(newLatLng);
+            shadowMarker.setLatLng(newLatLng);
+            issMarker.setLatLng(newLatLng);
             mymap.panTo(new L.LatLng(coordinates.latitude, coordinates.longitude));
         }
     }, [coordinates])
@@ -72,8 +85,11 @@ const Location = props => {
     }
 
     return (
-        <div className="Location">
-            <div id="map" style={{ height: '40vh', width: '70vw' }}></div>
+        <div className="Location d-flex justify-content-center">
+            <div className="d-flex flex-column justify-content-center align-items-center text-center">
+                <h1 className="pb-4">Internation Space Station (ISS) Location</h1>
+                <div id="map" style={{ height: '40vh', width: '50vw' }}></div>
+            </div>
         </div>
     )
 }
