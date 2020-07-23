@@ -1,38 +1,48 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+  font-family: 'Orbitron', sans-serif;
+  width: 100vw;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.Home {
+  width: 100vw;
+  min-height: 100vh;
+  background-image: url('./static/home_background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right;
+}
+
+.Login {
   color: white;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 15%;
+  padding: 20px 0px 30px 0px;
+  margin-top: 2vh;
+  box-shadow: 0px 0px 10px white;
 }
 
-.App-link {
-  color: #61dafb;
+/* Formats for LoginConsole */
+input {
+  border: 1px solid white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px white;
+  padding: 5px 20px 5px 20px;
+  letter-spacing: 3px;
+  width: 200px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button {
+  color: white;
+  padding: 20px;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px white;
+}
+
+button:hover {
+  background-color: #ffffff10;
+  box-shadow: 0px 0px 10px 3px white;
 }
