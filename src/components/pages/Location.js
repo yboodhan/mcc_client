@@ -6,12 +6,13 @@ import IssImage from '../../static/iss.png';
 
 const Location = props => {
     // Polling every 6 seconds to not crash API
-    let POLLING_DELAY_IN_MILLISECONDS = 6000;
+    let POLLING_DELAY_IN_MILLISECONDS = 5000;
 
     let [coordinates, setCoordinates] = useState(null);
     let [mymap, setMap] = useState(null);
     let [shadowMarker, setShadowMarker] = useState(null);
     let [issMarker, setIssMarker] = useState(null);
+    let [lastUpdated, setLastUpdated] = useState(new Date().toString());
 
     useEffect(() => {
         // Initialize the map by calling API once and setting the initial focus
@@ -62,6 +63,7 @@ const Location = props => {
             shadowMarker.setLatLng(newLatLng);
             issMarker.setLatLng(newLatLng);
             mymap.panTo(new L.LatLng(coordinates.latitude, coordinates.longitude));
+            setLastUpdated(new Date().toString());
         }
     }, [coordinates])
 
@@ -88,7 +90,21 @@ const Location = props => {
         <div className="Location d-flex justify-content-center">
             <div className="d-flex flex-column justify-content-center align-items-center text-center">
                 <h1 className="pb-4">Internation Space Station (ISS) Location</h1>
-                <div id="map" style={{ height: '40vh', width: '50vw' }}></div>
+                <div id="map" style={{ height: '35vh', width: '50vw' }}></div>
+                <div id="LocationControlPanel" className="p-4">
+                    <strong>
+
+                        {coordinates ?
+                            <div>
+                                <p>Last Updated: {lastUpdated}</p>
+                                <p>Location [lat,long]: [{coordinates.latitude}, {coordinates.longitude}]</p>
+                            </div>
+                            :
+                            <p>Finding location...</p>
+                        }
+
+                    </strong>
+                </div>
             </div>
         </div>
     )
