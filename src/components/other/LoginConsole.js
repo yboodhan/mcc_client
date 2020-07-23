@@ -3,12 +3,12 @@ import FacebookLoginButton from './FacebookLoginButton';
 
 const LoginConsole = props => {
     return (
-        <div class="Login text-center">
+        <div className="Login text-center">
             <div>
-                <div class="card-header">
+                <div className="card-header">
                     <strong>LOGIN</strong>
                 </div>
-                <div class="card-body">
+                <div className="card-body">
                     <form>
                         <div className="form-group p-2">
                             <label className="pr-2" for="username">Username: </label>
@@ -20,7 +20,7 @@ const LoginConsole = props => {
                         </div>
                     </form>
                 </div>
-                <div class="card-footer text-muted">
+                <div className="card-footer text-muted">
                     <button>Submit</button>
                 </div>
             </div>

@@ -13,6 +13,33 @@
   background-position: right;
 }
 
+.Profile {
+  color: white;
+  width: 100vw;
+  min-height: 100vh;
+  background-image: url('./static/background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+a {
+  padding: 10px 10px 10px 0px !important;
+  color: white;
+  text-shadow: 0px 0px 15px white;
+  letter-spacing: 3px;
+}
+
+a:hover {
+  color: rgb(141, 162, 219);
+  text-shadow: 0px 0px 20px white;
+}
+
+.Profile {
+  letter-spacing: 2.5px;
+}
+
+/* Formats for LoginConsole */
 .Login {
   color: white;
   background-color: transparent;
@@ -23,7 +50,6 @@
   box-shadow: 0px 0px 10px white;
 }
 
-/* Formats for LoginConsole */
 input {
   border: 1px solid white;
   border-radius: 10px;

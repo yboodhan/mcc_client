@@ -12,7 +12,7 @@ const Home = props => {
                     </div>
                 </div>
                 <div className="row">
-                    <div class="col-sm-10 col-md-10 col-lg-4 offset-lg-8 offset-sm-1 offset-md-1">
+                    <div className="col-sm-10 col-md-10 col-lg-4 offset-lg-8 offset-sm-1 offset-md-1">
                         <LoginConsole />
                     </div>
                 </div>
