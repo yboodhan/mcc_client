@@ -69,8 +69,8 @@ const Location = props => {
 
     async function findIssLocation() {
         try {
-            let issCoordinates = await getCoordinates();
-            setCoordinates(issCoordinates);
+            let issCoordinatesResponse = await getCoordinates();
+            setCoordinates(issCoordinatesResponse.iss_position);
         } catch (error) {
             console.log('An error occured while getting coordinates.')
             // TODO: proper error dealing code
@@ -82,7 +82,7 @@ const Location = props => {
             .then(response => {
                 return response.json()
             }).then((results) => {
-                return results.iss_position;
+                return results;
             })
     }
 
