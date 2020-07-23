@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const NavBar = props => {
     let navigationLinks = [
@@ -13,12 +13,16 @@ const NavBar = props => {
         {
             text: "ISS Location",
             path: "/location"
+        },
+        {
+            text: "Logout",
+            path: "/"
         }
     ];
 
     return (
         <div className="pt-4 pb-5">
-            <ul className="nav">
+            <ul className="nav d-flex justify-content-between">
                 {
                     navigationLinks.map((link, index) => {
                         return (

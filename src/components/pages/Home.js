@@ -7,7 +7,7 @@ const Home = props => {
         <div className="Home">
             <div className="container">
                 <div className="row">
-                    <div className="col-sm-12 p-5 text-center">
+                    <div className="col-sm-12 p-5 center">
                         <HomeLogo />
                     </div>
                 </div>

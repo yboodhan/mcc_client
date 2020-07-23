@@ -1,14 +1,26 @@
-import React from 'react';
-import './App.css';
-// import Home from './components/pages/Home';
+import React, { useState, useEffect } from 'react';
+
+import { BrowserRouter as Router } from 'react-router-dom'
+
+import Home from './components/pages/Home';
 import Profile from './components/pages/Profile';
 
+import './App.css';
+
 function App() {
+  let [user, setUser] = useState(true);
+
+  useEffect(() => {
+    // TODO: implement check for fb and login
+  }, [])
+
 
   return (
-    <div className="App">
-      <Profile />
-    </div>
+    <Router>
+      <div className="App">
+       {user ? <Profile /> : <Home />}
+      </div>
+    </Router>
   );
 }
 
