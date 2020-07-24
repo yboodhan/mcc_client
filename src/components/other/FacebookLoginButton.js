@@ -1,22 +1,16 @@
 import React from 'react';
-import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 
 const FacebookLoginButton = props => {
 
-    const responseFacebook = (response) => {
-        console.log(response);
+    function handleFacebookSignIn(e) {
+        console.log('Facebook login was clicked.')
+        e.preventDefault();
+        window.open(`${process.env.REACT_APP_SERVER_URL}/auth/facebook`, "_self");
     }
 
     return (
         <div>
-            <FacebookLogin
-                appId="614256389223586"
-                autoLoad={true}
-                fields="name,email,picture"
-                callback={responseFacebook}
-                render={renderProps => (
-                    <button onClick={renderProps.onClick}>LOGIN WITH FACEBOOK</button>
-                )} />
+            <button onClick={handleFacebookSignIn}>LOGIN WITH FACEBOOK</button>
         </div>
     )
 }

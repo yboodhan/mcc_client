@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import L, { map } from 'leaflet';
+import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 import IssImage from '../../static/iss.png';
 
 const Location = props => {
-    // Polling every 6 seconds to not crash API
-    let POLLING_DELAY_IN_MILLISECONDS = 5000;
 
     let [coordinates, setCoordinates] = useState(null);
     let [mymap, setMap] = useState(null);
@@ -15,6 +13,9 @@ const Location = props => {
     let [lastUpdated, setLastUpdated] = useState(new Date().toString());
 
     useEffect(() => {
+        // Polling every 6 seconds to not crash API
+        let POLLING_DELAY_IN_MILLISECONDS = 5000;
+
         // Initialize the map by calling API once and setting the initial focus
         let mymap = L.map('map', {
             center: [51.505, -0.09],
@@ -47,6 +48,16 @@ const Location = props => {
         setIssMarker(issIconMarker);
         setShadowMarker(circle);
 
+        async function findIssLocation() {
+            try {
+                let issCoordinatesResponse = await getCoordinates();
+                setCoordinates(issCoordinatesResponse.iss_position);
+            } catch (error) {
+                console.log('An error occured while getting coordinates.')
+                // TODO: proper error dealing code
+            }
+        }
+
         // Call location API once upon load to pan almost immediately
         findIssLocation();
 
@@ -67,18 +78,16 @@ const Location = props => {
         }
     }, [coordinates])
 
-    async function findIssLocation() {
-        try {
-            let issCoordinatesResponse = await getCoordinates();
-            setCoordinates(issCoordinatesResponse.iss_position);
-        } catch (error) {
-            console.log('An error occured while getting coordinates.')
-            // TODO: proper error dealing code
-        }
-    }
-
     function getCoordinates() {
-        return fetch(`${process.env.REACT_APP_SERVER_URL}/location`)
+        return fetch(`${process.env.REACT_APP_SERVER_URL}/location`, {
+            method: "GET",
+            credentials: "include",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Credentials": true
+            }
+        })
             .then(response => {
                 return response.json()
             }).then((results) => {

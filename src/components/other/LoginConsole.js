@@ -11,11 +11,11 @@ const LoginConsole = props => {
                 <div className="card-body">
                     <form>
                         <div className="form-group p-2">
-                            <label className="pr-2" for="username">Username: </label>
+                            <label className="pr-2" htmlFor="username">Username: </label>
                             <input type="text" name="username" id="username"/>
                         </div>
                         <div className="form-group p-2">
-                            <label className="pr-2" for="password">Password: </label>
+                            <label className="pr-2" htmlFor="password">Password: </label>
                             <input type="password" name="password" id="password" />
                         </div>
                     </form>

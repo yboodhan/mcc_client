@@ -20,16 +20,28 @@ const NavBar = props => {
         }
     ];
 
+    function handleLogout() {
+        window.open(`${process.env.REACT_APP_SERVER_URL}/auth/logout`, "_self");
+    }
+
     return (
         <div className="pt-4 pb-5">
             <ul className="nav d-flex justify-content-between">
                 {
                     navigationLinks.map((link, index) => {
-                        return (
-                            <li className="nav-item pr-5" key={`nav-${index}`}>
-                                <a className="nav-link active" href={link.path}>{link.text}</a>
-                            </li>
-                        )
+                        if (link.text === "Logout") {
+                            return(
+                                <li className="nav-item pr-5" key={`nav-${index}`}>
+                                    <button className="nav-link active" onClick={handleLogout}>{link.text}</button>
+                                </li>
+                            )
+                        } else {
+                            return (
+                                <li className="nav-item pr-5" key={`nav-${index}`}>
+                                    <a className="nav-link active" href={link.path}>{link.text}</a>
+                                </li>
+                            )
+                        }
                     })
                 }
             </ul>

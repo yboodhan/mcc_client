@@ -1,5 +1,5 @@
 import React from 'react';
-import Typing from 'react-typing-animation';
+// import Typing from 'react-typing-animation';
 import AstronautImage from '../../static/astronaut.png';
 
 const UserInfo = props => {
@@ -7,11 +7,11 @@ const UserInfo = props => {
         <div className="container">
             <div className="row mb-5">
                 <div className="col">
-                    <Typing speed={50}>
+                    {/* <Typing speed={50}>
                         Hello, [TODO: INSERT NAME HERE].
-                        <Typing.Delay ms={500} />
+                        <Typing.Delay ms={500} /> */}
                         Welcome to the Pryon Mission Control Center!
-                    </Typing>
+                    {/* </Typing> */}
                 </div>
             </div>
 
