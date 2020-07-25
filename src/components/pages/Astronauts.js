@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import NavBar from '../other/NavBar';
 
 const Astronauts = props => {
 
@@ -15,7 +16,7 @@ const Astronauts = props => {
                 // TODO: proper error dealing code
             }
         }
-        
+
         findAstronautsInSpace();
     }, [])
 
@@ -37,6 +38,8 @@ const Astronauts = props => {
     }
 
     return (
+        <div className="LoggedInPage">
+            <NavBar handleLogout={props.handleLogout} />
         <div className="Astronauts d-flex justify-content-center">
             <div className="d-flex flex-column justify-content-center align-items-center text-center">
                 <h1 className="pb-4">Astronauts In Space Directory</h1>
@@ -72,6 +75,7 @@ const Astronauts = props => {
                     </a>
                 </div>
             </div>
+        </div>
         </div>
     )
 }

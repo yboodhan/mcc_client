@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import NavBar from '../other/NavBar';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
@@ -96,6 +97,8 @@ const Location = props => {
     }
 
     return (
+        <div className="LoggedInPage">
+            <NavBar handleLogout={props.handleLogout} />
         <div className="Location d-flex justify-content-center">
             <div className="d-flex flex-column justify-content-center align-items-center text-center">
                 <h1 className="pb-4">Internation Space Station (ISS) Location</h1>
@@ -115,6 +118,7 @@ const Location = props => {
                     </strong>
                 </div>
             </div>
+        </div>
         </div>
     )
 }

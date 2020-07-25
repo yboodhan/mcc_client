@@ -1,10 +1,11 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Switch, Redirect, Link } from 'react-router-dom';
 
 const NavBar = props => {
     let navigationLinks = [
         {
             text: "Profile",
-            path: "/profile"
+            path: "/"
         },
         {
             text: "Astronauts",
@@ -20,25 +21,25 @@ const NavBar = props => {
         }
     ];
 
-    function handleLogout() {
-        window.open(`${process.env.REACT_APP_SERVER_URL}/auth/logout`, "_self");
+    if (props.isAuthenticated == false) {
+        return <Redirect to="/" />
     }
 
     return (
-        <div className="pt-4 pb-5">
+        <div className="p-5">
             <ul className="nav d-flex justify-content-between">
                 {
                     navigationLinks.map((link, index) => {
                         if (link.text === "Logout") {
                             return(
                                 <li className="nav-item pr-5" key={`nav-${index}`}>
-                                    <button className="nav-link active" onClick={handleLogout}>{link.text}</button>
+                                    <button className="nav-link active" onClick={props.handleLogout}>{link.text}</button>
                                 </li>
                             )
                         } else {
                             return (
                                 <li className="nav-item pr-5" key={`nav-${index}`}>
-                                    <a className="nav-link active" href={link.path}>{link.text}</a>
+                                    <Link to={link.path}>{link.text}</Link>
                                 </li>
                             )
                         }
