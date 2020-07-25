@@ -25,6 +25,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Welcome {user  ? user.email: "noone"}</h1>
       <AppRouter user={user} isAuthenticated={isAuthenticated} handleAuth={handleAuth} handleLogout={handleLogout} />
     </div>
   );

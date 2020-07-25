@@ -6,7 +6,6 @@ import UserInfo from './UserInfo';
 import NavBar from '../other/NavBar';
 const Home = props => {
 
-    let [userIsFound, setUserIsFound] = useState(false);
 
     useEffect(() => {
         async function findUser() {
@@ -16,8 +15,7 @@ const Home = props => {
                 let user = userResults.user;
                 console.log('found a user')
                 if (user) {
-                    props.handleAuth(user, true);
-                    setUserIsFound(true);
+                    props.handleAuth(user);
                 }
 
             } catch (error) {
@@ -57,7 +55,7 @@ const Home = props => {
                         </div>
                         <div className="row">
                             <div className="col-sm-10 col-md-10 col-lg-4 offset-lg-8 offset-sm-1 offset-md-1">
-                                <LoginConsole />
+                                <LoginConsole handleAuth={props.handleAuth} />
                             </div>
                         </div>
                     </div>
