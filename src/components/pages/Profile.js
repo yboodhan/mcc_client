@@ -10,26 +10,35 @@ const Profile = props => {
 
                 <div className="row pb-5 text-center">
                     <div className="col">
-                        <h1>Welcome to the Pryon Mission Control Center!</h1>
+                        <h1>🪐 Welcome to the Pryon Mission Control Center! 🌍</h1>
                     </div>
                 </div>
 
-                <div className="row">
-                    <div className="col">
-                        <div style={{fontSize: "20px"}}>
+                <div className="row" style={{ fontSize: "25px" }}>
+                    <div className="col d-flex flex-column align-items-center justify-content-center">
+                        <div>
                             YOUR STATS:
                         </div>
+                        { props.user ?
+                            <ul>
+                                <li>ID: {props.user.id}</li>
+                                <li>First Name: {props.user.firstName}</li>
+                                <li>Last Name: {props.user.lastName}</li>
+                                <li>Email: {props.user.email}</li>
+                            </ul>
+                            :
 
-                        <ul>
-                            <li>ID: {props.user.id}</li>
-                            <li>First Name: {props.user.firstName}</li>
-                            <li>Last Name: {props.user.lastName}</li>
-                            <li>Email: {props.user.email}</li>
-                        </ul>
+                            <div>
+                                <div className="spinner-border text-light" role="status">
+                                    <span className="sr-only">Loading...</span>
+                                </div>
+                                <div className="text-light">Loading...</div>
+                            </div>
+                        }
                     </div>
 
-                    <div className="col">
-                        <img alt="astronaut" className="img-fluid" src={AstronautImage} />
+                    <div className="col d-flex justify-content-center">
+                        <img alt="astronaut" className="img-fluid" style={{ maxHeight: "40vh" }} src={AstronautImage} />
                     </div>
                 </div>
             </div>

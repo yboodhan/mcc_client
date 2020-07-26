@@ -82,7 +82,7 @@ a .leaflet-control-zoom-in {
 
 /* Formats for screen */
 .screen {
-  height: 100vh;
+  min-height: 100vh;
   border: 40px ridge white;
   border-radius: 60px;
   background: transparent;
@@ -94,29 +94,33 @@ a .leaflet-control-zoom-in {
 }
 
 .screen-content {
+  height: 90vh;
   color: chartreuse;
   padding: 50px;
-  height: 70vh;
   overflow-y: auto;
   letter-spacing: 1px;
 }
 
 .screen-controls {
-  height: 30vh;
+  min-height: 10vh;
   width: auto;
   background: white;
   border: 10px ridge white;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
 }
 
 .screen-button {
   border: 3px outset silver;
-  padding: 5px 8vw 5px 8vw;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: black;
+}
+
+.screen-button a {
+  text-decoration: none;
+  color: black;
+  padding: 0px !important;
 }
 
 .screen-button:hover {
@@ -147,4 +151,22 @@ tr:hover {
 #map {
   border: 20px groove silver;
   border-radius: 10px;
+}
+
+.loading {
+  min-height: 100vh;
+  border: 40px ridge white;
+  border-radius: 60px;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'VT323', monospace;
+  background-image: url('./static/background.jpg');
+}
+
+.active button {
+  background-color: lightgrey;
+  border: 2px inset silver;
 }

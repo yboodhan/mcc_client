@@ -13,7 +13,9 @@ const LoginConsole = props => {
         try {
             let user = await logInUser();
             if (user) {
-                props.handleAuth(user);
+                props.handleAuth(user, true);
+            } else {
+                props.handleAuth(null, false);
             }
         } catch (error) {
             console.log('There was an error logging in this user.')

@@ -10,7 +10,7 @@ const Home = props => {
             {!props.isAuthenticated ?
                 <Login handleAuth={props.handleAuth} />
                 :
-                <Profile user={props.user}/>
+                <Profile user={props.user} isAuthenticated={props.isAuthenticated} />
             }
         </div>
     )

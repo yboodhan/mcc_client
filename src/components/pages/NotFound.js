@@ -2,7 +2,11 @@ import React from 'react'
 
 const NotFound = props => {
     return (
-        <div>Not found page</div>
+        <div className="screen-content text-danger">
+            ERROR: 404 <br/>
+            THIS PAGE CANNOT BE FOUND. <br/>
+            PLEASE NAVIGATE <a href="/">BACK TO THE MAIN PAGE.</a>
+        </div>
     )
 }
 

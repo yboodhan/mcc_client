@@ -1,23 +1,30 @@
 import React, { useEffect, useState } from 'react'
 import NavBar from '../other/NavBar';
+import { Redirect } from 'react-router-dom';
 
 const Astronauts = props => {
 
     let [astronauts, setAstronauts] = useState(null);
 
     useEffect(() => {
+        let cancelledPromise = false;
+
         async function findAstronautsInSpace() {
             try {
-                let astronautsInSpaceResponse = await getAstronauts();
-                console.log(astronautsInSpaceResponse.people)
-                setAstronauts(astronautsInSpaceResponse.people);
+                let astronautsInSpace = await getAstronauts();
+                if (!cancelledPromise) {
+                    setAstronauts(astronautsInSpace);
+                }
             } catch (error) {
                 console.log('An error occured while getting astronauts in space.')
-                // TODO: proper error dealing code
             }
         }
 
         findAstronautsInSpace();
+
+        return () => {
+            cancelledPromise = true;
+        }
     }, [])
 
     function getAstronauts() {
@@ -33,7 +40,11 @@ const Astronauts = props => {
             .then(response => {
                 return response.json()
             }).then((results) => {
-                return results;
+                if (results.status === "error") {
+                    return null;
+                } else {
+                    return results.people;
+                }
             })
     }
 
@@ -43,14 +54,21 @@ const Astronauts = props => {
         return namesString;
     }
 
+    if (!props.isAuthenticated) {
+        return (
+            <Redirect to="/" />
+        )
+    }
+
     return (
 
         <div className="pt-5 screen-content">
             <div className="container">
 
-                <div className="row pb-5 text-center">
+                <div className="row text-center">
                     <div className="col">
-                        <h1 className="pb-4">Astronauts In Space Directory</h1>
+                        <h1 className="pb-4">👩🏾‍🚀 Astronauts In Space Directory 👨🏻‍🚀</h1>
+                        <p> Click on each astronaut or craft to learn more.</p>
                     </div>
                 </div>
 
@@ -73,7 +91,14 @@ const Astronauts = props => {
                                             </tr>
                                         )
                                     }) :
-                                        <tr><td>No astronauts to see.</td></tr>
+                                        <tr><td>
+                                            <div>
+                                                <div className="spinner-border text-light" role="status">
+                                                    <span className="sr-only">Loading...</span>
+                                                </div>
+                                                <div className="text-light">Loading...</div>
+                                            </div>
+                                        </td></tr>
                                     }
                                 </tbody>
                             </table>
