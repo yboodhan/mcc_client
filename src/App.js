@@ -3,10 +3,13 @@ import React, { useState, useEffect } from 'react';
 // Routes
 import AppRouter from './components/pages/AppRouter';
 
+// Components
 import Loading from './components/pages/Loading';
+
 // Styles
 import './App.css';
 
+// Checks for logged in user and renders components accordingly
 function App() {
   let [user, setUser] = useState(null);
   let [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -14,7 +17,7 @@ function App() {
 
   useEffect(() => {
 
-    // On page load, look for a user
+    // On load, look for a user
     async function findUser() {
       try {
         let user = await getUser();
@@ -55,7 +58,7 @@ function App() {
       })
   }
 
-  // Logs in user and set authentication to true
+  // Updates user and set authentication
   function handleAuth(user, auth) {
     setUser(user);
     setIsAuthenticated(auth);
@@ -67,7 +70,6 @@ function App() {
     setIsAuthenticated(false);
   }
 
-  console.log('Auth is now', isAuthenticated)
   return (
     <div className="App">
       { isLoading ? 

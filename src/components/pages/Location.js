@@ -16,7 +16,6 @@ const Location = props => {
     let [lastUpdated, setLastUpdated] = useState(new Date().toString());
     let [isAuthenticated, setIsAuthenticated] = useState(true);
 
-    console.log(props.isAuthenticated)
     useEffect(() => {
         setIsAuthenticated(props.isAuthenticated);
 
@@ -132,7 +131,7 @@ const Location = props => {
             <div className="container">
                 <div className="row pb-1 text-center">
                     <div className="col">
-                        <h1 className="pb-1">🛰 Internation Space Station (ISS) Location 🛰</h1>
+                        <h1 className="pb-1"><span role="img" aria-label="iss">🛰</span> Internation Space Station (ISS) Location <span role="img" aria-label="iss">🛰</span></h1>
 
                         {coordinates ?
                             <div>

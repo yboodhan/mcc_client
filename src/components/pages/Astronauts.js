@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import NavBar from '../other/NavBar';
 import { Redirect } from 'react-router-dom';
 
 const Astronauts = props => {
@@ -67,7 +66,7 @@ const Astronauts = props => {
 
                 <div className="row text-center">
                     <div className="col">
-                        <h1 className="pb-4">👩🏾‍🚀 Astronauts In Space Directory 👨🏻‍🚀</h1>
+                        <h1 className="pb-4"><span role="img" aria-label="astronaut">👩🏾‍🚀</span> Astronauts In Space Directory <span role="img" aria-label="astronaut">👨🏻‍🚀</span></h1>
                         <p> Click on each astronaut or craft to learn more.</p>
                     </div>
                 </div>

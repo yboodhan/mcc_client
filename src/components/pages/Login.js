@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import HomeLogo from '../logos/HomeLogo';
 import LoginConsole from '../other/LoginConsole';

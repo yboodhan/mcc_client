@@ -10,7 +10,7 @@ const Profile = props => {
 
                 <div className="row pb-5 text-center">
                     <div className="col">
-                        <h1>🪐 Welcome to the Pryon Mission Control Center! 🌍</h1>
+                        <h1><span role="img" aria-label="planet">🪐</span> Welcome to the Pryon Mission Control Center! <span role="img" aria-label="earth">🌍</span></h1>
                     </div>
                 </div>
 

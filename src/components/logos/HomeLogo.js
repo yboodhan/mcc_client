@@ -13,7 +13,7 @@ const acronymStyles = {
 const HomeLogo = props => {
     return (
         <div style={styles} className="animate__animated animate__flash text-center p-3">
-            <span style={acronymStyles}>P</span>yron <span style={acronymStyles}>M</span>ission <span style={acronymStyles}>C</span>ontrol <span style={acronymStyles}>C</span>enter
+            <span style={acronymStyles}>P</span>ryon <span style={acronymStyles}>M</span>ission <span style={acronymStyles}>C</span>ontrol <span style={acronymStyles}>C</span>enter
         </div>
     )
 }

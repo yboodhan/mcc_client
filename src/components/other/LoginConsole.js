@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import FacebookLoginButton from './FacebookLoginButton';
 
 const LoginConsole = props => {
@@ -64,7 +64,7 @@ const LoginConsole = props => {
                             <input type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)} />
                         </div>
                         <div className="text-danger">
-                            { message }
+                            {message}
                         </div>
                     </div>
                     <div className="card-footer text-muted">

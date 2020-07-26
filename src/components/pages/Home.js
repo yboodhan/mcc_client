@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Components
 import Login from './Login';
 import Profile from './Profile';
 

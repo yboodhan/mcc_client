@@ -1,14 +1,15 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+// Components
+import Home from './Home';
+import ControlConsole from './ControlConsole';
 import Astronauts from './Astronauts';
 import Location from './Location';
-import Home from './Home';
 import NotFound from './NotFound'
-import ControlConsole from './ControlConsole';
 
 const AppRouter = props => {
-console.log(props.isAuthenticated)
+
     return (
         <div className="screen">
             <Router>
@@ -18,7 +19,6 @@ console.log(props.isAuthenticated)
                         :
                         <></>
                 }
-
                 <Switch>
                     <Route exact path="/" render={
                         () => <Home handleAuth={props.handleAuth} user={props.user} isAuthenticated={props.isAuthenticated} />
@@ -29,7 +29,7 @@ console.log(props.isAuthenticated)
                     } />
 
                     <Route exact path="/location" render={
-                        () => <Location  isAuthenticated={props.isAuthenticated} />
+                        () => <Location isAuthenticated={props.isAuthenticated} />
                     } />
 
                     <Route component={NotFound} />
