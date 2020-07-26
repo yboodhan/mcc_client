@@ -3,7 +3,6 @@ import React from 'react';
 const FacebookLoginButton = props => {
 
     function handleFacebookSignIn(e) {
-        console.log('Facebook login was clicked.')
         window.open(`${process.env.REACT_APP_SERVER_URL}/auth/facebook`, "_self");
     }
 

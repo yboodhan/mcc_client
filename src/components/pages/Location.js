@@ -97,15 +97,12 @@ const Location = props => {
     }
 
     return (
-        <div className="LoggedInPage">
-            <NavBar handleLogout={props.handleLogout} />
-        <div className="Location d-flex justify-content-center">
-            <div className="d-flex flex-column justify-content-center align-items-center text-center">
-                <h1 className="pb-4">Internation Space Station (ISS) Location</h1>
-                <div id="map" style={{ height: '35vh', width: '50vw' }}></div>
-                <div id="LocationControlPanel" className="p-4">
-                    <strong>
+        <div className="pt-5 screen-content">
+            <div className="container">
 
+                <div className="row pb-1 text-center">
+                    <div className="col">
+                        <h1 className="pb-1">Internation Space Station (ISS) Location</h1>
                         {coordinates ?
                             <div>
                                 <p>Last Updated: {lastUpdated}</p>
@@ -114,11 +111,15 @@ const Location = props => {
                             :
                             <p>Finding location...</p>
                         }
+                    </div>
+                </div>
 
-                    </strong>
+                <div className="row">
+                    <div className="col d-flex justify-content-center">
+                        <div id="map" style={{ height: '35vh', width: '50vw' }}></div>
+                    </div>
                 </div>
             </div>
-        </div>
         </div>
     )
 }

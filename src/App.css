@@ -2,12 +2,13 @@
   font-family: 'Orbitron', sans-serif;
   width: 100vw;
   min-height: 100vh;
+  background-color: black;
 }
 
 .Home {
   width: 100vw;
-  min-height: 100vh;
-  background-image: url('./static/home_background.jpg');
+  /* min-height: 100vh; */
+  /* background-image: url('./static/home_background.jpg'); */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: right;
@@ -33,6 +34,7 @@ a {
 a:hover {
   color: rgb(141, 162, 219);
   text-shadow: 0px 0px 20px white;
+  cursor: pointer;
 }
 
 .Profile {
@@ -44,10 +46,11 @@ a:hover {
   color: white;
   background-color: black;
   border: 1px solid white;
-  border-radius: 15%;
-  padding: 20px 0px 30px 0px;
+  border-radius: 20px;
+  padding: 15px 0px 30px 0px;
   margin-top: 2vh;
   box-shadow: 0px 0px 10px white;
+  max-width: 300px;
 }
 
 input {
@@ -61,7 +64,7 @@ input {
 
 button {
   color: white;
-  padding: 20px;
+  padding: 10px 20px 10px 20px;
   background-color: transparent;
   border: 1px solid white;
   border-radius: 15px;
@@ -75,4 +78,73 @@ button:hover {
 
 a .leaflet-control-zoom-in {
   background-color: red;
+}
+
+/* Formats for screen */
+.screen {
+  height: 100vh;
+  border: 40px ridge white;
+  border-radius: 60px;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: 'VT323', monospace;
+  background-image: url('./static/background.jpg');
+}
+
+.screen-content {
+  color: chartreuse;
+  padding: 50px;
+  height: 70vh;
+  overflow-y: auto;
+  letter-spacing: 1px;
+}
+
+.screen-controls {
+  height: 30vh;
+  width: auto;
+  background: white;
+  border: 10px ridge white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.screen-button {
+  border: 3px outset silver;
+  padding: 5px 8vw 5px 8vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.screen-button:hover {
+  border: 2px inset silver;
+  cursor: pointer;
+}
+
+table, th, td {
+  border: 1px solid rgba(128, 255, 0, 0.568) !important;
+  box-shadow: 0px 0px 10px chartreuse;
+  color: chartreuse;
+  padding: 15px 80px 15px 80px;
+}
+
+th {
+  font-size: 30px;
+}
+
+table {
+  border-radius: 50px;
+}
+
+tr:hover {
+  color: black !important;
+  background-color: rgba(128, 255, 0, 0.205);
+}
+
+#map {
+  border: 20px groove silver;
+  border-radius: 10px;
 }

@@ -1,20 +1,15 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-
-import UserInfo from './UserInfo';
 import Astronauts from './Astronauts';
 import Location from './Location';
 import Home from './Home';
-import NavBar from '../other/NavBar';
 import NotFound from './NotFound'
 
 const AppRouter = props => {
-    console.log(props.user)
-    console.log(props.isAuthenticated)
-
 
     return (
+        <div className="screen">
         <Router>
 
             <Switch>
@@ -33,6 +28,7 @@ const AppRouter = props => {
                 <Route component={NotFound} />
             </Switch>
         </Router>
+        </div>
     )
 }
 

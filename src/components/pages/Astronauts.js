@@ -29,7 +29,7 @@ const Astronauts = props => {
                 "Content-Type": "application/json",
                 "Access-Control-Allow-Credentials": true
             }
-            })
+        })
             .then(response => {
                 return response.json()
             }).then((results) => {
@@ -37,46 +37,53 @@ const Astronauts = props => {
             })
     }
 
+    function getNameSearchString(astronaut) {
+        let names = astronaut.split(" ");
+        let namesString = names.join("+");
+        return namesString;
+    }
+
     return (
-        <div className="LoggedInPage">
-            <NavBar handleLogout={props.handleLogout} />
-        <div className="Astronauts d-flex justify-content-center">
-            <div className="d-flex flex-column justify-content-center align-items-center text-center">
-                <h1 className="pb-4">Astronauts In Space Directory</h1>
 
-                <div className="table-responsive">
-                    <table className="table table-striped table-dark table-hover" style={{ maxHeight: '60vh' }}>
-                        <thead>
-                            <tr>
-                                <th scope="col">Name</th>
-                                <th scope="col">Craft</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {astronauts ? astronauts.map((astronaut, index) => {
-                                return (
-                                    <tr key={`astronaut-${index}`}>
-                                        <td>{astronaut.name}</td>
-                                        <td>{astronaut.craft}</td>
+        <div className="pt-5 screen-content">
+            <div className="container">
+
+                <div className="row pb-5 text-center">
+                    <div className="col">
+                        <h1 className="pb-4">Astronauts In Space Directory</h1>
+                    </div>
+                </div>
+
+                <div className="row">
+                    <div className="col text-center d-flex justify-content-center">
+                        <div className="table-responsive">
+                            <table className="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Craft</th>
                                     </tr>
-                                )
-                            }) :
-                                <tr><td>No astronauts to see.</td></tr>
-                            }
-                        </tbody>
-                    </table>
+                                </thead>
+                                <tbody>
+                                    {astronauts ? astronauts.map((astronaut, index) => {
+                                        return (
+                                            <tr key={`astronaut-${index}`}>
+                                                <td><a target="_blank" rel="noopener noreferrer" href={`http://www.google.com/search?q=${getNameSearchString(astronaut.name)}`}>{astronaut.name}</a></td>
+                                                <td><a target="_blank" rel="noopener noreferrer" href={`http://www.google.com/search?q=${astronaut.craft}`}>{astronaut.craft}</a></td>
+                                            </tr>
+                                        )
+                                    }) :
+                                        <tr><td>No astronauts to see.</td></tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
 
-                <div className="p-4">
-                    <a className="nav-link active" href="/location" title="Go to the ISS Location page">
-                        <button>
-                            Learn more about the ISS craft and it's location.
-                        </button>
-                    </a>
-                </div>
             </div>
         </div>
-        </div>
+
     )
 }
 

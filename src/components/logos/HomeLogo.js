@@ -3,18 +3,16 @@ import React from 'react';
 const styles = {
     color: 'white',
     fontWeight: 'bold',
-    opacity: '90%',
-    fontSize: '22px'
+    fontSize: '25px'
 };
 
 const acronymStyles = {
-    opacity: '100%',
-    fontSize: '25px'
+    fontSize: '30px'
 };
 
 const HomeLogo = props => {
     return (
-        <div style={styles}>
+        <div style={styles} className="animate__animated animate__flash text-center p-3">
             <span style={acronymStyles}>P</span>yron <span style={acronymStyles}>M</span>ission <span style={acronymStyles}>C</span>ontrol <span style={acronymStyles}>C</span>enter
         </div>
     )
