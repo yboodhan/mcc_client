@@ -1,6 +1,6 @@
 import React from 'react';
 
-import HomeLogo from '../logos/HomeLogo';
+import HomeLogo from '../other/HomeLogo';
 import LoginConsole from '../other/LoginConsole';
 
 const Login = props => {

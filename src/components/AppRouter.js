@@ -2,11 +2,11 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // Components
-import Home from './Home';
-import ControlConsole from './ControlConsole';
-import Astronauts from './Astronauts';
-import Location from './Location';
-import NotFound from './NotFound'
+import Home from './pages/Home';
+import ControlConsole from './other/ControlConsole';
+import Astronauts from './pages/Astronauts';
+import Location from './pages/Location';
+import NotFound from './pages/NotFound'
 
 const AppRouter = props => {
 

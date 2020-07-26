@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
 // Routes
-import AppRouter from './components/pages/AppRouter';
+import AppRouter from './components/AppRouter';
 
 // Components
-import Loading from './components/pages/Loading';
+import Loading from './components/other/Loading';
 
 // Styles
 import './App.css';
