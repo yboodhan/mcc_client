@@ -1,27 +1,9 @@
+/* General formats */
 .App {
   font-family: 'Orbitron', sans-serif;
   width: 100vw;
   min-height: 100vh;
   background-color: black;
-}
-
-.Home {
-  width: 100vw;
-  /* min-height: 100vh; */
-  /* background-image: url('./static/home_background.jpg'); */
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: right;
-}
-
-.LoggedInPage {
-  color: white;
-  width: 100vw;
-  min-height: 100vh;
-  background-image: url('./static/background.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
 }
 
 a {
@@ -32,13 +14,8 @@ a {
 }
 
 a:hover {
-  color: rgb(141, 162, 219);
   text-shadow: 0px 0px 20px white;
   cursor: pointer;
-}
-
-.Profile {
-  letter-spacing: 2.5px;
 }
 
 /* Formats for LoginConsole */
@@ -80,7 +57,7 @@ a .leaflet-control-zoom-in {
   background-color: red;
 }
 
-/* Formats for screen */
+/* Formats for screen design */
 .screen {
   min-height: 100vh;
   border: 40px ridge white;
@@ -128,6 +105,7 @@ a .leaflet-control-zoom-in {
   cursor: pointer;
 }
 
+/* Formats for table design */
 table, th, td {
   border: 1px solid rgba(128, 255, 0, 0.568) !important;
   box-shadow: 0px 0px 10px chartreuse;
@@ -148,11 +126,13 @@ tr:hover {
   background-color: rgba(128, 255, 0, 0.205);
 }
 
+/* Formats for map */
 #map {
   border: 20px groove silver;
   border-radius: 10px;
 }
 
+/* Formats for loading page */
 .loading {
   min-height: 100vh;
   border: 40px ridge white;
@@ -166,6 +146,7 @@ tr:hover {
   background-image: url('./static/background.jpg');
 }
 
+/* Formats for nav console */
 .active button {
   background-color: lightgrey;
   border: 2px inset silver;
