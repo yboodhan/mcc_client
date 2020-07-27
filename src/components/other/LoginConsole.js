@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
+
+// Components
 import FacebookLoginButton from './FacebookLoginButton';
 
+// Renders log in console with username and password form and facebook login button
 const LoginConsole = props => {
-
     let [username, setUsername] = useState("");
     let [password, setPassword] = useState("");
     let [message, setMessage] = useState("");
 
+    // Updates the user based on successful/failed log in (local auth)
     async function handleSubmit(e) {
         e.preventDefault();
 
@@ -22,6 +25,7 @@ const LoginConsole = props => {
         }
     }
 
+    // Checks if the credentials inputted for local log in are valid
     function logInUser() {
         return fetch(`${process.env.REACT_APP_SERVER_URL}/auth/login`, {
             method: "POST",

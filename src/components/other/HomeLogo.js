@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Styles
 const styles = {
     color: 'white',
     fontWeight: 'bold',
@@ -10,6 +11,7 @@ const acronymStyles = {
     fontSize: '30px'
 };
 
+// Renders and adds animation to the logo on the homepage
 const HomeLogo = props => {
     return (
         <div style={styles} className="animate__animated animate__flash text-center p-3">

@@ -1,7 +1,7 @@
 import React from 'react';
-
 import { NavLink } from 'react-router-dom';
 
+// Renders navigation buttons for logged in users
 const ControlConsole = props => {
     let navigationLinks = [
         {

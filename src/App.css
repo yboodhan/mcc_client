@@ -94,7 +94,7 @@ a .leaflet-control-zoom-in {
 }
 
 .screen-content {
-  height: 90vh;
+  height: 70vh;
   color: chartreuse;
   padding: 50px;
   overflow-y: auto;

@@ -3,6 +3,7 @@ import React from 'react';
 import HomeLogo from '../other/HomeLogo';
 import LoginConsole from '../other/LoginConsole';
 
+// Renders the login page for non-logged in users
 const Login = props => {
 
     return (

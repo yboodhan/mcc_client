@@ -1,15 +1,15 @@
-import React from 'react'
+import React from 'react';
 
-const IsLoading = props => {
+// Components
+import Loader from './Loader';
+
+// Renders a loading page
+const Loading = props => {
     return (
         <div className="loading">
-            <div className="spinner-border text-light" role="status">
-                <span className="sr-only">Loading...</span>
-            </div>
-
-            <div className="text-light">Loading...</div>
+            <Loader />
         </div>
     )
 }
 
-export default IsLoading;
+export default Loading;

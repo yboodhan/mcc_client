@@ -8,6 +8,7 @@ import Astronauts from './pages/Astronauts';
 import Location from './pages/Location';
 import NotFound from './pages/NotFound'
 
+// Renders relevant based on path and user prop
 const AppRouter = props => {
 
     return (

@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
+
+// Components
+import Loader from '../other/Loader';
 import L from 'leaflet';
+
+// Styles and assets
+import IssImage from '../../static/iss.png';
 import 'leaflet/dist/leaflet.css';
 
-import IssImage from '../../static/iss.png';
-
+// Renders page with map showing current ISS location for authenticated users
 const Location = props => {
-
-
 
     let [coordinates, setCoordinates] = useState(null);
     let [mymap, setMap] = useState(null);
@@ -16,17 +19,18 @@ const Location = props => {
     let [lastUpdated, setLastUpdated] = useState(new Date().toString());
     let [isAuthenticated, setIsAuthenticated] = useState(true);
 
+    // Adds map contents to DOM element and polls API for location data
     useEffect(() => {
         setIsAuthenticated(props.isAuthenticated);
 
         // For clean up
         let cancelledPromise = false;
 
-        // Polling every 6 seconds to not crash API
-        let POLLING_DELAY_IN_MILLISECONDS = 5000;
+        // Polling every 6 seconds
+        let POLLING_DELAY_IN_MILLISECONDS = 6000;
 
+        // Adds intial marker, tiles, and shadow elements to map element
         function setUpMap() {
-            // Initialize the map by calling API once and setting the initial focus
             let mymap = L.map('map', {
                 center: [51.505, -0.09],
                 zoomControl: false,
@@ -64,6 +68,9 @@ const Location = props => {
             setUpMap();
         }
 
+        // Initialize the map by calling API once and setting the initial focus
+
+        // Sets coordinates for map
         async function findIssLocation() {
             try {
                 let issCoordinates = await getCoordinates();
@@ -79,7 +86,7 @@ const Location = props => {
         // Call location API once upon load to pan almost immediately
         findIssLocation();
 
-        // Poll the location API for the ISS location upon mount
+        // Poll the location API for the ISS location upon mount every 6 seconds
         const locationIntervalId = setInterval(findIssLocation, POLLING_DELAY_IN_MILLISECONDS);
 
         // Clear polling after component is unmounted
@@ -89,6 +96,7 @@ const Location = props => {
         }
     }, [])
 
+    // Moves marker, shadow, and map focus when coordinates change
     useEffect(() => {
         if (coordinates) {
             let newLatLng = new L.LatLng(coordinates.latitude, coordinates.longitude);
@@ -99,6 +107,7 @@ const Location = props => {
         }
     }, [coordinates])
 
+    // Gets current ISS coordinates
     function getCoordinates() {
         return fetch(`${process.env.REACT_APP_SERVER_URL}/location`, {
             method: "GET",
@@ -117,9 +126,12 @@ const Location = props => {
                 } else {
                     return results.iss_position;
                 }
+            }).catch((error) => {
+                console.log(error)
             })
     }
 
+    // Redirects non authenticated users to home page
     if (!isAuthenticated) {
         return (
             <Redirect to="/" />
@@ -139,19 +151,14 @@ const Location = props => {
                                 <p>Location [lat,long]: [{coordinates.latitude}, {coordinates.longitude}]</p>
                             </div>
                             :
-                            <div>
-                                <div className="spinner-border text-light" role="status">
-                                    <span className="sr-only">Loading...</span>
-                                </div>
-                                <div className="text-light">Loading...</div>
-                            </div>
+                            <Loader />
                         }
                     </div>
                 </div>
 
                 <div className="row">
                     <div className="col d-flex justify-content-center">
-                        <div id="map" style={{ height: '50vh', width: '80vw' }}></div>
+                        <div id="map" style={{ height: '40vh', width: '80vw' }}></div>
                     </div>
                 </div>
             </div>

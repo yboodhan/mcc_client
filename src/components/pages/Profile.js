@@ -1,7 +1,10 @@
 import React from 'react';
 
+// Components
 import AstronautImage from '../../static/astronaut.png';
+import Loader from '../other/Loader';
 
+// Renders page containing user information based on user prop
 const Profile = props => {
 
     return (
@@ -19,7 +22,7 @@ const Profile = props => {
                         <div>
                             YOUR STATS:
                         </div>
-                        { props.user ?
+                        {props.user ?
                             <ul>
                                 <li>ID: {props.user.id}</li>
                                 <li>First Name: {props.user.firstName}</li>
@@ -27,13 +30,7 @@ const Profile = props => {
                                 <li>Email: {props.user.email}</li>
                             </ul>
                             :
-
-                            <div>
-                                <div className="spinner-border text-light" role="status">
-                                    <span className="sr-only">Loading...</span>
-                                </div>
-                                <div className="text-light">Loading...</div>
-                            </div>
+                            <Loader />
                         }
                     </div>
 

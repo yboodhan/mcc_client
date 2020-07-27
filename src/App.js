@@ -9,7 +9,7 @@ import Loading from './components/other/Loading';
 // Styles
 import './App.css';
 
-// Checks for logged in user and renders components accordingly
+// Checks for logged in user and displays loading page or relevant component
 function App() {
   let [user, setUser] = useState(null);
   let [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -17,7 +17,7 @@ function App() {
 
   useEffect(() => {
 
-    // On load, look for a user
+    // Updates the user state
     async function findUser() {
       try {
         let user = await getUser();
@@ -35,6 +35,7 @@ function App() {
     findUser();
   }, [])
 
+  // Looks for a user in the current session
   function getUser() {
     return fetch(`${process.env.REACT_APP_SERVER_URL}/auth/login/success`, {
       method: "GET",
@@ -58,7 +59,7 @@ function App() {
       })
   }
 
-  // Updates user and set authentication
+  // Updates user and authentication states
   function handleAuth(user, auth) {
     setUser(user);
     setIsAuthenticated(auth);

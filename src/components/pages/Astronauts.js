@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { Redirect } from 'react-router-dom';
 
+// Components
+import Loader from '../other/Loader';
+
+// Renders page with table showing all astronauts currently in space
 const Astronauts = props => {
 
     let [astronauts, setAstronauts] = useState(null);
 
+    // On page load, find all astronauts in space and update state
     useEffect(() => {
         let cancelledPromise = false;
 
+        // Sets astronaut state
         async function findAstronautsInSpace() {
             try {
                 let astronautsInSpace = await getAstronauts();
@@ -21,11 +27,13 @@ const Astronauts = props => {
 
         findAstronautsInSpace();
 
+        // Cancels promise if component is unmounted (redirected)
         return () => {
             cancelledPromise = true;
         }
     }, [])
 
+    // Gets all astronauts currently in space
     function getAstronauts() {
         return fetch(`${process.env.REACT_APP_SERVER_URL}/astronauts`, {
             method: "GET",
@@ -44,15 +52,19 @@ const Astronauts = props => {
                 } else {
                     return results.people;
                 }
+            }).catch((error) => {
+                console.log(error)
             })
     }
 
-    function getNameSearchString(astronaut) {
-        let names = astronaut.split(" ");
-        let namesString = names.join("+");
-        return namesString;
+    // Creates a query string for Google search
+    function getSearchString(field) {
+        let fields = field.split(" ");
+        let queryString = fields.join("+");
+        return queryString;
     }
 
+    // Redirect to the home page if user is not authenticated
     if (!props.isAuthenticated) {
         return (
             <Redirect to="/" />
@@ -60,7 +72,6 @@ const Astronauts = props => {
     }
 
     return (
-
         <div className="pt-5 screen-content">
             <div className="container">
 
@@ -85,18 +96,13 @@ const Astronauts = props => {
                                     {astronauts ? astronauts.map((astronaut, index) => {
                                         return (
                                             <tr key={`astronaut-${index}`}>
-                                                <td><a target="_blank" rel="noopener noreferrer" href={`http://www.google.com/search?q=${getNameSearchString(astronaut.name)}`}>{astronaut.name}</a></td>
-                                                <td><a target="_blank" rel="noopener noreferrer" href={`http://www.google.com/search?q=${astronaut.craft}`}>{astronaut.craft}</a></td>
+                                                <td><a target="_blank" rel="noopener noreferrer" href={`http://www.google.com/search?q=${getSearchString(astronaut.name)}`}>{astronaut.name}</a></td>
+                                                <td><a target="_blank" rel="noopener noreferrer" href={`http://www.google.com/search?q=${getSearchString(astronaut.craft)}`}>{astronaut.craft}</a></td>
                                             </tr>
                                         )
                                     }) :
                                         <tr><td>
-                                            <div>
-                                                <div className="spinner-border text-light" role="status">
-                                                    <span className="sr-only">Loading...</span>
-                                                </div>
-                                                <div className="text-light">Loading...</div>
-                                            </div>
+                                            <Loader />
                                         </td></tr>
                                     }
                                 </tbody>
