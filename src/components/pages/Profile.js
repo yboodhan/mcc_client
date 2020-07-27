@@ -35,7 +35,7 @@ const Profile = props => {
                     </div>
 
                     <div className="col d-flex justify-content-center">
-                        <img alt="astronaut" className="img-fluid" style={{ maxHeight: "40vh" }} src={AstronautImage} />
+                        <img role="img" alt="astronaut" className="img-fluid" style={{ maxHeight: "40vh" }} src={AstronautImage} />
                     </div>
                 </div>
             </div>

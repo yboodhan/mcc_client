@@ -57,7 +57,7 @@ const LoginConsole = props => {
                     <strong>LOGIN</strong>
                 </div>
 
-                <form onSubmit={handleSubmit} onChange={(e) => setMessage("")} autoComplete="off">
+                <form aria-label="form" onSubmit={handleSubmit} onChange={(e) => setMessage("")} autoComplete="off">
                     <div className="card-body">
                         <div className="form-group p-2">
                             <label className="pr-2" htmlFor="username">Username: </label>
